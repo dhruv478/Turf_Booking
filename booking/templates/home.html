@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1>Book Your Favorite Turf Anytime, Anywhere</h1>
+  <p>Find, compare and reserve football turfs near you instantly.</p>
+
+</section>
+
+<section class="sports-section">
+  <h2>Popular Turfs</h2>
+  <div class="sports-grid">
+    {% for turf in turfs %}
+    <a href="{% url 'turf_detail' turf.id %}">
+      <div class="sport-card">
+      <img src="{{ turf.image.url }}" alt="{{ turf.name }}">
+    </a>
+      <div class="info">
+        <h4>{{ turf.name }}</h3>
+        <p>{{ turf.location }} • {{ turf.sport }}</p>
+      </div>
+    </div>
+    {% empty %}
+      <p>No turfs found for this selection.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- 🏆 Sports Section (NEW) -->
+<section class="sports-section">
+  <h2>Sports You Can Play</h2>
+  <p>Explore different sports available at our partner venues.</p>
+
+  <div class="sports-grid">
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Football">
+        <img src="{% static 'images/foot.jpg' %}" alt="Football">
+        <h3>Football</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Cricket">
+        <img src="{% static 'images/cri.jpg' %}" alt="Cricket">
+        <h3>Cricket</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Badminton">
+        <img src="{% static 'images/bad.jpg' %}" alt="Badminton">
+        <h3>Badminton</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Tennis">
+        <img src="{% static 'images/ten.jpg' %}" alt="Tennis">
+        <h3>Tennis</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Basketball">
+        <img src="{% static 'images/bask.jpg' %}" alt="Basketball">
+        <h3>Basketball</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Volleyball">
+        <img src="{% static 'images/voll.jpg' %}" alt="Volleyball">
+        <h3>Volleyball</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Pickleball">
+        <img src="{% static 'images/pik.jpg' %}" alt="Pickleball">
+        <h3>Pickleball</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% comment %} <section class="video-section">
+  <h2>Book Your Match and Play Now!</h2>
+  <img src="https://images.unsplash.com/photo-1518606373681-8fce0a366e2b?w=1200" alt="Turf Booking Video">
+</section> {% endcomment %}
+{% endblock %}

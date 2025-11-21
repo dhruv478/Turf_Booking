@@ -1,0 +1,46 @@
+{% load static %}
+{% load socialaccount %}
+
+<link rel="stylesheet" href="{% static 'css/auth.css' %}" />
+
+<div class="container expanded">
+  <a href="{% url 'role' %}" class="back-btn">← Back</a>
+
+  <h2>{{ role|capfirst }} Portal</h2>
+  <p class="subtitle">Login to your account</p>
+
+  <form method="POST" class="form">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+      {{ field }}
+      {% if field.errors %}
+        <p class="error">{{ field.errors|join:", " }}</p>
+      {% endif %}
+    {% endfor %}
+    
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- Google Login Button -->
+  <a href="#" onclick="signInWithGoogleAndSendToken()" class="google-btn">
+      <img src="https://www.svgrepo.com/show/475656/google-color.svg"
+          alt="Google" class="google-icon">
+      <span>Sign in with Google</span>
+    </a>
+
+
+  <p class="switch-text">
+    Don’t have an account?
+    {% if role == 'user' %}
+      <a href="{% url 'signup_user' %}">Signup here</a>
+    {% else %}
+      <a href="{% url 'signup_owner' %}">Signup here</a>
+    {% endif %}
+  </p>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="{% static 'js/firebase-auth.js' %}"></script>

@@ -1,0 +1,121 @@
+/* turf.css */
+:root{
+  --primary: #8bd59e;
+  --primary-dark: #66c07a;
+  --muted: #6b6f76;
+  --dark: #1f2933;
+  --bg-light: #f6fbf7;
+  --card: #ffffff;
+  --glass: rgba(255,255,255,0.85);
+  --accent-shadow: 0 12px 36px rgba(102,192,122,0.08);
+  --radius: 14px;
+  --max-width: 1200px;
+}
+
+/* Reset & base */
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Poppins", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;}
+html,body{height:100%;background:var(--bg-light);color:var(--dark);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.container{max-width:var(--max-width);margin:0 auto;padding:24px}
+
+/* Locations filter (top) */
+.locations{
+  max-width:1100px;
+  margin:28px auto;
+  background:linear-gradient(180deg, rgba(139,213,158,0.06), rgba(255,255,255,0.0));
+  padding:20px;
+  border-radius:12px;
+  border:1px solid rgba(139,213,158,0.08);
+  box-shadow:0 10px 30px rgba(2,24,18,0.03);
+}
+.locations h2{font-size:1.25rem;color:var(--dark);margin-bottom:10px;font-weight:700}
+.location-form{display:flex;gap:12px;align-items:center}
+.location-form select{
+  width:100%;
+  max-width:420px;
+  padding:12px 14px;border-radius:10px;border:1px solid #dfeee4;background:#fff;color:var(--dark);font-size:1rem;appearance:none;box-shadow:0 6px 18px rgba(1,18,34,0.03)
+}
+.location-form select:focus{outline:3px solid rgba(139,213,158,0.18)}
+
+/* Search bar (floating) */
+.search-bar{
+  width:75%;max-width:980px;margin:18px auto 0;display:flex;gap:12px;align-items:center;background:var(--glass);padding:14px;border-radius:12px;box-shadow:var(--accent-shadow);backdrop-filter:blur(6px)
+}
+.search-bar input[type="text"]{
+  flex:1;border:0;background:transparent;padding:8px 12px;font-size:1rem;color:var(--dark);outline:none
+}
+.search-bar .btn{
+  background:linear-gradient(180deg,var(--primary),var(--primary-dark));color:#fff;border:none;padding:10px 18px;border-radius:10px;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(102,192,122,0.12);transition:transform .14s ease, box-shadow .14s ease
+}
+.search-bar .btn:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(102,192,122,0.16)}
+
+/* Sports section wrapper */
+.sports-section{
+  max-width:1100px;margin:40px auto;padding:34px;border-radius:14px;background:linear-gradient(180deg,#fff,#fbfff9);box-shadow:0 10px 30px rgba(6,45,21,0.02);border:1px solid rgba(139,213,158,0.06)
+}
+.sports-section h2{font-size:1.4rem;color:var(--dark);margin-bottom:6px;font-weight:700}
+.sports-section p{color:var(--muted);margin-bottom:18px}
+
+/* Grid of sport cards */
+.sports-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  align-items:start;
+}
+.sport-card{
+  background:var(--card);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(4,37,15,0.04);
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  border:1px solid rgba(139,213,158,0.08);
+  display:flex;
+  flex-direction:column;
+  min-height:240px;
+}
+.sport-card a{color:inherit;text-decoration:none;display:block;flex:1}
+.sport-card img{
+  width:100%;height:160px;object-fit:cover;display:block;
+  border-bottom:1px solid rgba(0,0,0,0.03)
+}
+.sport-card h3{
+  font-size:1.05rem;padding:12px 14px 6px;color:var(--dark);font-weight:700
+}
+.sport-card p{
+  padding:0 14px 14px;color:var(--muted);font-size:0.95rem
+}
+.sport-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 44px rgba(139,213,158,0.12);
+  border-color:rgba(102,192,122,0.18)
+}
+
+/* Empty state */
+.sports-section p.empty, .sports-grid p{
+  color:var(--muted);text-align:center;padding:20px;font-size:1rem
+}
+
+/* Utility helpers used in template */
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;border:0}
+.container-inline{display:flex;gap:12px;align-items:center}
+
+/* Footer (if present) */
+.site-footer{margin-top:36px;text-align:center;color:var(--muted);font-size:0.95rem;padding-bottom:40px}
+
+/* Modal / overlays (if modal used elsewhere) */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);backdrop-filter:blur(3px)}
+.modal[aria-hidden="false"]{display:flex}
+.modal-panel{background:var(--card);padding:20px;border-radius:12px;max-width:520px;width:92%;box-shadow:0 12px 40px rgba(2,28,19,0.06);border:1px solid rgba(139,213,158,0.08)}
+.modal-close{background:transparent;border:0;font-size:20px;cursor:pointer;color:var(--muted)}
+
+/* Responsive tweaks */
+@media (max-width:900px){
+  .search-bar{width:92%;flex-direction:column;align-items:stretch;padding:12px}
+  .sports-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .sport-card{min-height:unset}
+  .locations{padding:16px;border-radius:10px;margin:18px}
+}
+
+/* Micro animation */
+@keyframes floatUp{from{transform:translateY(6px)}to{transform:translateY(0)}}
+.sport-card{animation:floatUp .45s ease both}

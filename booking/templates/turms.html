@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Turf Booking — Terms & Conditions</title>
+  <style>
+    :root{
+      --bg:#f6fbfa;
+      --card:#ffffff;
+      --accent:#0f8f6f;
+      --muted:#6b7280;
+      --text:#0b2540;
+      --glass: rgba(255,255,255,0.7);
+      --radius:14px;
+      --maxw:900px;
+      --pad:28px;
+      font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background: linear-gradient(180deg,#ecfbf5 0%, #f6fbfa 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .wrap{
+      max-width:calc(var(--maxw) + 40px);
+      margin:40px auto;
+      padding:20px;
+      box-sizing:border-box;
+    }
+
+    .header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:18px;
+    }
+
+    .brand {
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .logo {
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#0fa87a,#0b7d58);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:20px;
+      box-shadow:0 6px 18px rgba(11,125,88,0.12);
+    }
+
+    .title {
+      font-size:20px;
+      font-weight:700;
+      line-height:1;
+    }
+
+    .subtitle {
+      font-size:13px;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    .back-link{
+      text-decoration:none;
+      color:var(--accent);
+      background:transparent;
+      border:1px solid rgba(15,143,111,0.08);
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .card {
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:var(--pad);
+      box-shadow: 0 10px 30px rgba(12,40,32,0.06);
+      border: 1px solid rgba(11,125,88,0.04);
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns:1fr;
+      gap:20px;
+      margin-top:20px;
+    }
+
+    h2.section {
+      margin:0 0 12px 0;
+      font-size:18px;
+      color:var(--accent);
+      font-weight:700;
+    }
+
+    p {
+      color:var(--muted);
+      line-height:1.6;
+      margin:0 0 12px 0;
+      font-size:15px;
+    }
+
+    ul {
+      margin:0 0 12px 20px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    li { margin-bottom:8px; }
+
+    .small {
+      font-size:13px;
+      color:#9aa2ad;
+    }
+
+    footer.save {
+      margin-top:20px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .muted-note {
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Responsive */
+    @media (min-width:900px){
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .card.large {
+        grid-column: span 2;
+      }
+    }
+
+    /* small visual tweaks for reading */
+    .section-block { margin-bottom:8px; }
+    .section-block p:last-child { margin-bottom:0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="brand">
+        <div class="logo">TB</div>
+        <div>
+          <div class="title">Turf Booking — Terms & Conditions</div>
+          <div class="subtitle">Rules, booking & payment, cancellations and refund policy</div>
+        </div>
+      </div>
+
+       <!-- Local path back-link (your uploaded file path; transform externally if needed) -->
+      <a class="back-link" href="/">⟵ Back to Dashboard</a> 
+    </div>
+
+    <main class="card">
+      <div class="grid">
+        <div class="card large">
+          <h2 class="section">Introduction</h2>
+          <p>These Terms and Conditions apply to bookings made using the Turf Booking platform. By creating a booking you accept and agree to these terms. The platform acts as a facilitator between users and turf owners: any dispute regarding the condition of a turf or conduct on the premises should be raised with the turf owner first.</p>
+
+          <h2 class="section">1. Booking Rules</h2>
+          <div class="section-block">
+            <ul>
+              <li>All bookings must include correct user details: name, contact number, date and time slot.</li>
+              <li>A booking is only confirmed when payment is completed (if payment is required at booking).</li>
+              <li>Users must arrive at the turf at least <strong>10 minutes</strong> before their slot time.</li>
+              <li>The booked slot is valid only for the specified date and duration; overrunning the slot may incur additional charges by the owner.</li>
+            </ul>
+          </div>
+
+          <h2 class="section">2. Payment Terms</h2>
+          <div class="section-block">
+            <ul>
+              <li>Payments are made using UPI apps or other payment gateways supported by the platform.</li>
+              <li>The displayed amount before payment is final unless a change is communicated by the turf owner prior to booking confirmation.</li>
+              <li>Users must provide a valid transaction/reference ID after making a UPI payment; false IDs will be treated as non-payment.</li>
+              <li>Payment failure, partial payment, or mismatched amounts can result in the booking being cancelled by the owner.</li>
+            </ul>
+          </div>
+
+          <h2 class="section">3. Cancellation & Refunds</h2>
+          <div class="section-block">
+            <p>Refunds depend on who initiates cancellation and how much notice was given:</p>
+            <ul>
+              <li><strong>User cancellations:</strong>
+                <ul>
+                  <li>≥ 24 hours before start: <strong>100%</strong> refund.</li>
+                  <li>6–24 hours before start: <strong>50%</strong> refund.</li>
+                  <li>< 6 hours before start: <strong>No refund</strong>.</li>
+                </ul>
+              </li>
+              <li><strong>Owner cancellations:</strong> If the owner cancels for maintenance, weather or safety reasons, users receive a <strong>100%</strong> refund (or a reschedule option at the owner’s choice).</li>
+            </ul>
+            <p class="small">Refunds are processed through the same payment channel and typically take <strong>3–7 business days</strong> depending on the payment provider.</p>
+          </div>
+
+          <h2 class="section">4. No-Show Policy</h2>
+          <div class="section-block">
+            <p>If a user does not arrive within <strong>30 minutes</strong> after the booked start time, the booking is marked as a no-show and no refund will be issued. Owners may reassign the slot after the no-show period.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section">5. Use & Conduct Rules</h2>
+          <ul>
+            <li>Follow all rules displayed at the turf: footwear, equipment, and on-field behavior.</li>
+            <li>No smoking, alcohol, or illegal substances are permitted on the premises.</li>
+            <li>Keep the turf and changing areas clean; dispose of trash in the proper bins.</li>
+            <li>Owners may enforce local rules and may remove or ban users who behave aggressively or dangerously.</li>
+          </ul>
+
+          <h2 class="section">6. Safety & Liability</h2>
+          <p>Users engage in sports activities at their own risk. The platform is not responsible for injuries, illness, or loss of property. Turf owners are expected to keep facilities safe and to maintain lights, surfaces and equipment. Any serious injury or major incident should be reported to local authorities immediately in addition to informing the owner.</p>
+
+          <h2 class="section">7. Weather & Force Majeure</h2>
+          <p>Bookings may be rescheduled or refunded if weather or other force-majeure events make playing unsafe. Turf owners will notify users as early as possible; final decisions about weather cancellations rest with the owner.</p>
+        </div>
+
+        <div class="card">
+          <h2 class="section">8. Owner Responsibilities</h2>
+          <ul>
+            <li>Maintain turf surface, lighting and basic facilities.</li>
+            <li>Set accurate pricing and availability.</li>
+            <li>Respond to legitimate user disputes and refund requests promptly.</li>
+          </ul>
+
+          <h2 class="section">9. Platform Liability</h2>
+          <p>The platform is a connector only. While the platform will make reasonable efforts to ensure accurate listing information, it does not inspect or guarantee the turf condition. The platform is not liable for disputes arising from turf condition, equipment, or on-field incidents.</p>
+
+          <h2 class="section">10. Privacy</h2>
+          <p>User data (name, contact, booking history) is used for booking fulfilment and communication. Sensitive financial data such as UPI PINs or bank passwords must never be shared and are not stored by the platform.</p>
+        </div>
+
+        <div class="card large">
+          <h2 class="section">11. Changes to Terms</h2>
+          <p>These Terms & Conditions may be modified. Users should check the latest version before booking. Continued use of the service implies agreement to any revised terms.</p>
+
+          <h2 class="section">12. Contact</h2>
+          <p>If you have questions about a booking, payment, refund or a turf listing, contact the turf owner directly via the contact information shown on the listing. For platform support (demo only), email: <strong>dhruvprajapati10076@gmail.com</strong></p>
+
+          <p class="small">These terms are provided for demonstration and should be reviewed by a legal advisor before use in a production environment.</p>
+        </div>
+      </div>
+
+      <footer class="save">
+        <div class="muted-note">Last updated: November 2025</div>
+        <div>
+          <a class="back-link"  href="/">⟵ Back to Dashboard</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

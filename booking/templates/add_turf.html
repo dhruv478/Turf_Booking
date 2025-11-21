@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="form-container">
+  <h2>Add Turf</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label for="name">Turf Name</label>
+    <input type="text" name="name" id="name" placeholder="Enter Turf Name" required>
+
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location" placeholder="Enter Location" required>
+
+    <label for="sport">Sport Category</label>
+    <input type="text" name="sport" id="sport" placeholder="e.g., Football, Cricket" required>
+
+    <label for="contact_number">Contact Number</label>
+    <input type="text" name="contact_number" id="contact_number" placeholder="Enter Contact Number" required>
+
+    <label for="price_per_hour">Price per Hour</label>
+    <input type="number" name="price_per_hour" id="price_per_hour" placeholder="Enter Price" required>
+
+    <label for="description">Description</label>
+    <textarea name="description" id="description" placeholder="Write short turf details..."></textarea>
+
+    <label for="amenities">Amenities</label>
+    <input type="text" name="amenities" id="amenities" placeholder="Comma separated (e.g., Lights, Parking)">
+
+    <label for="start_time">Start Time</label>
+    <input type="time" name="start_time" id="start_time" required>
+
+    <label for="end_time">End Time</label>
+    <input type="time" name="end_time" id="end_time" required>
+
+    <label for="image">Turf Image</label>
+    <input type="file" name="image" id="image">
+
+    <button type="submit" class="btn-e">Add Turf</button>
+    <a href="{% url 'owner_dashboard' %}" class="cancel-btn">Cancel</a>
+  </form>
+</div>
+
+{% endblock %}

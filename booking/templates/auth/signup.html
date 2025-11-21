@@ -1,0 +1,57 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ role|capfirst }} Signup | Turf Booking</title>
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}" />
+</head>
+
+<body>
+
+  <div class="container expanded">
+
+    <a href="{% url 'role' %}" class="back-btn">← Back</a>
+
+    <h2>{{ role|capfirst }} Portal</h2>
+    <p class="subtitle">Create a new account</p>
+
+    <form method="POST" class="form">
+      {% csrf_token %}
+
+      {% for field in form %}
+        {{ field }}
+        {% if field.errors %}
+          <p class="error">{{ field.errors|join:", " }}</p>
+        {% endif %}
+      {% endfor %}
+
+      <button type="submit">Signup</button>
+    </form>
+
+    <!-- Google Signup Button (2nd method) -->
+    <a href="#" onclick="signInWithGoogleAndSendToken()" class="google-btn">
+      <img src="https://www.svgrepo.com/show/475656/google-color.svg"
+          alt="Google" class="google-icon">
+      <span>Sign in with Google</span>
+    </a>
+
+
+    <p class="switch-text">
+      Already have an account?
+      {% if role == 'user' %}
+        <a href="{% url 'login_user' %}">Login here</a>
+      {% else %}
+        <a href="{% url 'login_owner' %}">Login here</a>
+      {% endif %}
+    </p>
+
+  </div>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="{% static 'js/firebase-auth.js' %}"></script>
+</body>
+</html>

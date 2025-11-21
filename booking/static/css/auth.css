@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap');
+
+/* ===== ROOT THEME ===== */
+:root{
+  --primary: #8bd59e;
+  --primary-dark: #66c07a;
+  --dark: #1f2933;
+  --muted: #6b6f76;
+  --bg-light: #f6fbf7;
+  --card: #ffffff;
+  --glass: rgba(255,255,255,0.65);
+  --radius: 18px;
+  --shadow: 0 12px 30px rgba(139,213,158,0.22);
+}
+
+/* ===== RESET ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #f1fbf4, #f6fbf7);
+  font-family: "Poppins", sans-serif;
+  color: var(--dark);
+}
+
+/* ===== CARD WRAPPER ===== */
+.container {
+  width: 430px;
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  border-radius: var(--radius);
+  padding: 3rem 2.6rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(139,213,158,0.20);
+  transition: 0.4s ease;
+}
+
+/* When expanded (role select) */
+.container.expanded {
+  background: white;
+  color: var(--dark);
+}
+
+/* ===== HEADINGS ===== */
+h1, h2 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+p { opacity: 0.85; }
+
+/* ===== ROLE SELECT BUTTONS ===== */
+.role-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.role-btn {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.8rem 1.8rem;
+  border-radius: 25px;
+  border: none;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.25s ease;
+  box-shadow: 0 6px 14px rgba(139,213,158,0.25);
+}
+
+.role-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+  display: inline-block;
+  color: var(--primary-dark);
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* ===== FORM ===== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.85rem;
+  border-radius: 12px;
+  border: 1px solid #d8f1df;
+  font-size: 1rem;
+  background: white;
+  color: var(--dark);
+  transition: 0.2s ease;
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(139,213,158,0.18);
+  outline: none;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+button[type="submit"] {
+  background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 8px 22px rgba(139,213,158,0.22);
+}
+
+button[type="submit"]:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+/* ===== SWITCH TEXT ===== */
+.switch-text {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+}
+
+.switch-text a {
+  color: var(--primary-dark);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===== ERROR TEXT ===== */
+.error { color: red; font-size: 0.85rem; }
+
+/* ===== GOOGLE LOGIN BUTTON ===== */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #d4e7d9;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 500;
+  color: var(--dark);
+  text-decoration: none;
+  gap: 10px;
+  transition: 0.2s ease;
+  margin-top: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+}
+
+.google-btn:hover {
+  background: #f9fcfa;
+  border-color: var(--primary);
+  box-shadow: 0 10px 20px rgba(139,213,158,0.12);
+  transform: translateY(-2px);
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}

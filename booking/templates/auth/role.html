@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Role | Turf Booking</title>
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}" />
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome 👋</h1>
+    <p>Select your role to continue</p>
+
+    <div class="role-buttons">
+      <a href="{% url 'login_user' %}" class="role-btn">Login as User</a>
+      <a href="{% url 'login_owner' %}" class="role-btn">Login as Owner</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+/* profile.css */
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --primary: #8bd59e;
+    --primary-dark: #66c07a;
+    --light-bg: #f6fbf7;
+    --card-bg: #ffffff;
+    --dark: #1f2933;
+    --muted: #6b6f76;
+    --shadow: 0 8px 24px rgba(139, 213, 158, 0.18);
+    --radius: 14px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--light-bg);
+    font-family: "Poppins", sans-serif;
+}
+
+/* MAIN WRAPPER */
+.profile-wrapper {
+    display: grid;
+    grid-template-columns: 100% 1fr;
+    gap: 20px;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* LOGOUT BUTTON */
+.logout-btn {
+    margin-top: 30px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: #ff4d4d;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    opacity: 0.8;
+}
+
+/* ----------------------- MAIN CONTENT ----------------------- */
+.main {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* TOP BAR */
+.topbar h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.topbar h1 span {
+    color: var(--primary);
+}
+
+/* ----------------------- PROFILE SECTION ----------------------- */
+.profile-section {
+    margin-top: 25px;
+    display: grid;
+    gap: 25px;
+}
+
+/* CARD STYLING */
+.glass {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+/* PROFILE CARD */
+.profile-banner img {
+    width: 100%;
+    height: 130px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar-wrapper {
+    text-align: center;
+}
+
+/* AVATAR */
+.avatar {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    object-fit: cover;
+}
+
+.avatar-letter {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.upload-btn {
+    margin-top: 8px;
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.upload-btn:hover {
+    background: var(--primary-dark);
+}
+
+.user-details h2 {
+    font-size: 20px;
+    margin-bottom: 4px;
+    color: var(--dark);
+}
+
+.user-details p {
+    color: var(--muted);
+}
+
+/* ROLE BADGE */
+.role-badge {
+    margin-top: 6px;
+    background: rgba(139, 213, 158, 0.15);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* ----------------------- EDIT FORM ----------------------- */
+.edit-form h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    color: var(--dark);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #d4e8d9;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.2s;
+    background: #ffffff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(139, 213, 158, 0.2);
+}
+
+/* SAVE BUTTON */
+.save-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.save-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* ----------------------- RESPONSIVE ----------------------- */
+@media (max-width: 900px) {
+    .profile-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-section {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .avatar {
+        width: 110px;
+        height: 110px;
+    }
+}

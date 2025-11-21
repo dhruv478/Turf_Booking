@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Explore Turfs{% endblock %}
+
+{% block content %}
+
+<!-- Location Filter -->
+<section class="locations">
+  <h2>Find Turfs by Location</h2>
+  <form method="get" action="" class="location-form">
+    <select name="city" onchange="this.form.submit()">
+      <option value="">-- Select Location --</option>
+      {% for city in cities %}
+        <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>
+          {{ city }}
+        </option>
+      {% endfor %}
+    </select>
+  </form>
+</section>
+<section>
+<div class="search-bar">
+    <input type="text" name="q" placeholder="Search by Turf or Location" value="{{ search_query|default:'' }}" />
+    {% if selected_city %}
+    <input type="hidden" name="city" value="{{ selected_city }}">
+    {% endif %}
+    {% if selected_sport %}
+    <input type="hidden" name="sports" value="{{ selected_sport }}">
+    {% endif %}
+    <button class="btn" type="submit">Search</button>
+  </div>
+</section>
+<!-- Sports Section -->
+<section class="sports-section">
+  <h2>Sports You Can Play</h2>
+  <p>Explore different sports available at our partner venues.</p>
+
+  <div class="sports-grid">
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Football">
+        <img src="{% static 'images/foot.jpg' %}" alt="Football">
+        <h3>Football</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Cricket">
+        <img src="{% static 'images/cri.jpg' %}" alt="Cricket">
+        <h3>Cricket</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Badminton">
+        <img src="{% static 'images/bad.jpg' %}" alt="Badminton">
+        <h3>Badminton</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Tennis">
+        <img src="{% static 'images/ten.jpg' %}" alt="Tennis">
+        <h3>Tennis</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Basketball">
+        <img src="{% static 'images/bask.jpg' %}" alt="Basketball">
+        <h3>Basketball</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Volleyball">
+        <img src="{% static 'images/voll.jpg' %}" alt="Volleyball">
+        <h3>Volleyball</h3>
+      </a>
+    </div>
+
+    <div class="sport-card">
+      <a href="{% url 'turfs' %}?sport=Pickleball">
+        <img src="{% static 'images/pik.jpg' %}" alt="Pickleball">
+        <h3>Pickleball</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Explore Turfs Section -->
+<section class="sports-section">
+  {% if selected_city or selected_sport %}
+    <h2>
+      {% if selected_city %}{{ selected_city }}{% endif %}
+      {% if selected_sport %} - {{ selected_sport }} Turfs{% endif %}
+    </h2>
+  {% else %}
+    <h2>All Available Turfs</h2>
+  {% endif %}
+  <div class="sports-grid">
+    {% for turf in turfs %}
+      <div class="sport-card">
+        <a href="{% url 'turf_detail' turf.id %}">
+        <img src="{{ turf.image.url }}" alt="{{ turf.name }}">
+        <h3>{{ turf.name }}</h3>
+        <p>{{ turf.location }} • {{ turf.sport }}</p>
+      </div>
+    {% empty %}
+      <p>No turfs found for this selection.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

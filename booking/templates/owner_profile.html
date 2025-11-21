@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+<div class="profile-wrapper">
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <header class="topbar">
+      <h1>Welcome Back,
+        <span id="ownername">
+          {{ request.user.first_name|default:request.user.username }}
+        </span> 👋
+      </h1>
+    </header>
+
+    <section class="profile-section">
+
+      <!-- Profile Card -->
+      <div class="profile-card glass">
+
+        <!-- Banner -->
+        <div class="profile-banner">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60" alt="">
+        </div>
+
+        <!-- Avatar & Info -->
+        <div class="profile-info">
+          <div class="avatar-wrapper">
+            {% if profile.avatar %}
+                <img class="avatar" src="{{ profile.avatar.url }}" alt="Avatar">
+              {% else %}
+                <div class="avatar-letter">
+                  {{ request.user.first_name|default:request.user.username|slice:":1"|upper }}
+                </div>
+              {% endif %}
+
+          </div>
+
+          <div class="owner-details">
+            <h2 id="ownerFullName">
+              {{ request.user.first_name }} {{ request.user.last_name }}
+            </h2>
+
+            <p id="ownerEmail">{{ request.user.email }}</p>
+
+            <p class="role-badge">
+              {% if request.user.profile.user_type == "owner" %}
+                🏟 Turf Owner
+              {% else %}
+                🏃 Player
+              {% endif %}
+            </p>
+          </div>
+        </div>
+
+        <!-- Edit Profile Form -->
+        <div class="edit-form glass">
+          <h3>Edit Profile</h3>
+
+          <form method="post" id="profileForm" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="full_name"
+              value="{{ request.user.first_name }} {{ request.user.last_name }}">
+            </div>
+
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" value="{{ request.user.email }}" disabled>
+            </div>
+
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="text" name="phone"
+              value="{{ request.user.profile.phone|default:'' }}">
+            </div>
+
+            <div class="form-group">
+              <label>Location</label>
+              <input type="text" name="location"
+              value="{{ request.user.profile.location|default:'' }}">
+            </div>
+
+            <div class="form-group">
+              <label>UPI ID</label>
+              <input type="text" name="upi_id"
+              value="{{ request.user.profile.upi_id|default:'' }}">
+            </div>
+
+            <div class="form-group">
+              <label>Bio</label>
+              <textarea name="bio" rows="3">{{ request.user.profile.bio|default:'' }}</textarea>
+            </div>
+
+            <button type="submit" class="save-btn">Save Changes</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+</div>
+
+<script src="{% static 'js/profile.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<div class="form-container">
+  <h2>Edit Turf</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label for="name">Turf Name</label>
+    <input type="text" name="name" id="name" value="{{ turf.name }}" required>
+
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location" value="{{ turf.location }}" required>
+
+    <label for="sport">Sport Category</label>
+    <input type="text" name="sport" id="sport" value="{{ turf.sport }}" required>
+
+    <label for="contact_number">Contact Number</label>
+    <input type="text" name="contact_number" id="contact_number" value="{{ turf.contact_number }}" required>
+
+    <label for="price_per_hour">Price per Hour</label>
+    <input type="number" name="price_per_hour" id="price_per_hour" value="{{ turf.price_per_hour }}" required>
+
+    <label for="description">Description</label>
+    <textarea name="description" id="description">{{ turf.description }}</textarea>
+
+    <label for="amenities">Amenities</label>
+    <input type="text" name="amenities" id="amenities" value="{{ turf.amenities }}">
+
+    <label for="start_time">Start Time</label>
+    <input type="time" name="start_time" id="start_time" value="{{ turf.start_time|time:'H:i' }}" required>
+
+    <label for="end_time">End Time</label>
+    <input type="time" name="end_time" id="end_time" value="{{ turf.end_time|time:'H:i' }}" required>
+
+    <label for="image">Turf Image</label>
+    <input type="file" name="image" id="image">
+    {% if turf.image %}
+      <img src="{{ turf.image.url }}" width="100" style="margin-top:10px; border-radius:8px;">
+    {% endif %}
+
+    <button type="submit" class="btn-e">Update Turf</button>
+    <a href="{% url 'owner_dashboard' %}" class="cancel-btn">Cancel</a>
+  </form>
+</div>
+
+{% endblock %}

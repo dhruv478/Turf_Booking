@@ -1,0 +1,338 @@
+/* ============================
+   GLOBAL THEME
+=============================== */
+:root {
+  --primary: #8bd59e;
+  --primary-dark: #66c07a;
+  --dark: #1f2933;
+  --muted: #6b6f76;
+  --card: #ffffff;
+  --bg-light: #f6fbf7;
+  --shadow: 0 12px 30px rgba(139,213,158,0.18);
+  --soft-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  --radius: 16px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-light);
+  color: var(--dark);
+}
+
+/* ============================
+   TOP IMAGE (Carousel)
+=============================== */
+.turf-carousel {
+  text-align: center;
+}
+
+.turf-carousel img {
+  width: 80%;
+  max-width: 1000px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  height: 400px;
+}
+
+.carousel-dots {
+  margin-top: 10px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #d8efe0;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 4px;
+  transition: background 0.3s;
+}
+
+.dot.active {
+  background-color: var(--primary);
+}
+
+/* ============================
+   MAIN LAYOUT
+=============================== */
+.turf-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  padding: 60px 8%;
+}
+
+/* ============================
+   LEFT SIDE DETAILS
+=============================== */
+.turf-left h1 {
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.rating {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+/* ===== PRICE SECTION ===== */
+.price-section h3 {
+  font-size: 1.1rem;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.rates {
+  display: flex;
+  gap: 40px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  border-bottom: 1px solid #e4f3e8;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+/* ===== LOCATION SECTION ===== */
+.location-section h3 {
+  font-size: 1.1rem;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.location-section a {
+  display: inline-block;
+  margin: 10px 0;
+  color: var(--primary-dark);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.location-section iframe {
+  width: 100%;
+  height: 260px;
+  border: 1px solid #d8efe0;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+/* ===== INFO GRID ===== */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 35px;
+}
+
+.info-box {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--soft-shadow);
+  border: 1px solid rgba(139,213,158,0.10);
+}
+
+.info-box h4 {
+  font-size: 1rem;
+  color: var(--dark);
+  margin-bottom: 8px;
+  border-bottom: 1px solid #e4f3e8;
+  padding-bottom: 5px;
+}
+
+.info-box ul {
+  padding-left: 18px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.info-box p {
+  margin: 5px 0;
+  color: var(--dark);
+}
+
+.tags span {
+  background: #eefaf3;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--dark);
+  box-shadow: 0 2px 3px rgba(0,0,0,0.04);
+}
+
+/* ============================
+   BOOKING CARD (RIGHT SIDE)
+=============================== */
+.booking-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 25px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(139,213,158,0.15);
+  position: sticky;
+  top: 100px;
+}
+
+label {
+  font-weight: 600;
+  color: var(--dark);
+  display: block;
+  margin-top: 12px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d8efe0;
+  border-radius: 10px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  background: white;
+  color: var(--dark);
+  transition: 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(139,213,158,0.18);
+  outline: none;
+}
+
+/* ===== BOOK BUTTON ===== */
+.btn-primary {
+  background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+  color: white;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: var(--shadow);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+/* ============================
+   PAYMENT PAGE + RECEIPT (Shared)
+=============================== */
+.receipt-container,
+.pay-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 10px;
+  background: var(--bg-light);
+}
+
+.receipt-card,
+.pay-card {
+  background: var(--card);
+  width: 90%;
+  max-width: 650px;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.5s ease;
+  border: 1px solid rgba(139,213,158,0.15);
+}
+
+.success-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: var(--primary-dark);
+}
+
+.thank {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* ===== BOOKING DETAILS SECTIONS ===== */
+.receipt-info,
+.booking-details {
+  background: #f7fdf9;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(139,213,158,0.15);
+}
+
+.turf-name,
+.booking-details h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.price-box h2 {
+  font-size: 32px;
+  color: var(--primary-dark);
+}
+
+/* QR */
+.qr-box img {
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  box-shadow: var(--soft-shadow);
+}
+
+/* Buttons */
+.btn-back,
+.btn-print,
+.pay-now-btn,
+.confirm-btn {
+  background: var(--primary-dark);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.btn-back:hover,
+.btn-print:hover,
+.pay-now-btn:hover,
+.confirm-btn:hover {
+  background: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* ============================
+   ANIMATION
+=============================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================
+   RESPONSIVE
+=============================== */
+@media (max-width: 992px) {
+  .turf-content {
+    grid-template-columns: 1fr;
+    padding: 40px 6%;
+  }
+  .booking-card {
+    position: relative;
+    top: 0;
+  }
+  .turf-carousel img {
+    width: 95%;
+  }
+}

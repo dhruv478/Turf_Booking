@@ -1,0 +1,119 @@
+{% extends 'base.html' %} {% load static %} {% block title %}{{ turf.name }} |
+Book Turf{% endblock %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/booking.css' %}" />
+
+<section class="turf-wrapper">
+  <!-- Turf Image Carousel -->
+  <div class="turf-carousel">
+    <img src="{{ turf.image.url }}" alt="{{ turf.name }}" />
+  </div>
+
+  <section class="turf-content">
+    <div class="turf-left">
+      <h1>{{ turf.name }}</h1>
+      <p class="rating">
+        ⭐ {{ turf.rating|default:"4.0" }}
+        <span>({{ turf.reviews|default:"150 reviews" }})</span>
+      </p>
+
+      <div class="price-section">
+        <h3>Rate per hour</h3>
+        <div class="rates">
+          <p>₹{{turf.price_per_hour}}</p>
+        </div>
+      </div>
+      <div class="price-section">
+        <h3>Available Timing</h3>
+        <div class="rates">
+          <p>{{turf.start_time}}</p>
+          <p>To</p>
+          <p>{{turf.end_time}}</p>
+        </div>
+      </div>
+
+      <div class="location-section">
+        <h3>Location</h3>
+        <p>{{turf.location}}</p>
+
+        <a href="https://maps.app.goo.gl/TrVonKDrH84uT4za8" target="_blank">
+          <i class="fa-solid fa-location-dot"></i> View on Google Maps
+        </a>
+        <iframe
+          src="https://www.google.com/maps?q={{ turf.location|urlencode }}&output=embed"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <h4>About Venue</h4>
+          <ul>
+            <li>{{turf.description}}</li>
+          </ul>
+        </div>
+
+        <div class="info-box">
+          <h4>Contact</h4>
+          <p><i class="fa-solid fa-phone"></i>{{ turf.contact_number }}</p>
+        </div>
+
+        <div class="info-box">
+          <h4>Amenities</h4>
+          <div class="tags">
+            <span>{{ turf.amenities }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Form -->
+    <aside class="turf-right">
+      <div class="booking-card">
+        <h3>Book Now</h3>
+        <!-- Pass price per hour to JavaScript safely -->
+      <span id="turf-rate" data-rate="{{ turf.price_per_hour }}" hidden></span>
+
+        <form method="POST" action="{% url 'book_turf' turf.id %}">
+          {% csrf_token %}
+
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" placeholder="Enter your full name" required/>
+
+          <label>Mobile No.</label>
+          <input type="text" name="mobile" class="form-control" placeholder="10-digit phone number" required/>
+
+          <label>Date</label>
+          <input type="date" name="date" class="form-control" required />
+
+          <label>Time</label>
+          <input type="time" name="time" class="form-control" required />
+
+          <label>Duration</label>
+          <select name="duration" id="duration" class="form-control" required>
+            <option value="1">1 Hour</option>
+            <option value="2">2 Hours</option>
+            <option value="3">3 Hours</option>
+            <option value="4">4 Hours</option>
+          </select>
+
+          <label>UPI ID</label>
+          <input type="text" name="upi_id" class="form-control" placeholder="e.g. name@upi" required />
+
+          <label>Payable Now</label>
+          <input type="number" name="payable_now" id="payable_now" class="form-control" value="{{ turf.price_per_hour }}" readonly />
+
+          <p><a href="{% url 'turms' %}">Terms & Condition</a></p>
+          <button type="submit" class="btn-primary">Book Turf</button>
+        </form>
+      </div>
+    </aside>
+  </section>
+</section>
+
+<script
+  src="https://kit.fontawesome.com/4a5b31ef8b.js"
+  crossorigin="anonymous"
+></script>
+<script src="{% static 'js/booking.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Complete Payment{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/receipt.css' %}">
+<link rel="stylesheet" href="{% static 'css/booking_pay.css' %}">
+
+<div class="receipt-container">
+  <div class="receipt-card">
+
+    <h2 class="success-title">Complete Your Payment</h2>
+    <p class="thank">Booking ID: #{{ booking.id }}</p>
+
+    <div class="receipt-info">
+      <h3>{{ booking.turf.name }}</h3>
+      <p><i class="fa-solid fa-location-dot"></i> {{ booking.turf.location }}</p>
+
+      <hr>
+
+      <p><strong>Name:</strong> {{ booking.name }}</p>
+      <p><strong>Date:</strong> {{ booking.date }}</p>
+      <p><strong>Time:</strong> {{ booking.time }}</p>
+      <p><strong>Duration:</strong> {{ booking.duration }}</p>
+
+      <hr>
+
+      <div class="price-box">
+        <p>Amount to Pay</p>
+        <h2>₹{{ booking.payable_now }}</h2>
+      </div>
+    </div>
+    <div class="owner-info">
+    <p><strong>Owner:</strong> {{ booking.turf.owner.first_name }} {{ booking.turf.owner.last_name }}</p>
+    <p><strong>Owner UPI:</strong> {{ booking.turf.owner.profile.upi_id|default:"Not Provided" }}</p>
+</div>
+
+    <!-- Owner UPI Dynamic -->
+    <div id="ownerUpi" data-upi="{{ booking.turf.owner.upi_id }}"></div>
+<h3>Scan to Pay</h3>
+
+<div class="qr-wrapper">
+    <img src="data:image/png;base64,{{ upi_qr }}" alt="UPI QR Code" class="qr-code">
+</div>
+
+    <a id="upiPayButton" class="btn-print">
+    💸 Pay Now (UPI Intent)
+</a>
+
+
+  </div>
+</div>
+
+<script src="{% static 'js/booking.js' %}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const upi = "{{ booking.turf.owner.profile.upi_id }}".trim();
+    const name = "{{ booking.turf.owner.first_name }}".trim();
+    const amount = "{{ booking.payable_now }}".trim();
+    const bookingID = "{{ booking.id }}";
+
+    // Create clean UPI URL (no spaces, no newlines)
+    const upiUrl = "upi://pay?pa=" + encodeURIComponent(upi) +
+                   "&pn=" + encodeURIComponent(name) +
+                   "&am=" + encodeURIComponent(amount) +
+                   "&cu=INR" +
+                   "&tn=" + encodeURIComponent("Booking #" + bookingID);
+
+    // Assign to <a> href
+    document.getElementById("upiPayButton").setAttribute("href", upiUrl);
+});
+</script>
+
+<script src="https://kit.fontawesome.com/4a5b31ef8b.js" crossorigin="anonymous"></script>
+
+{% endblock %}

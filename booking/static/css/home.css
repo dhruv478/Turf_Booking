@@ -1,0 +1,145 @@
+/* home.css */
+:root{
+  --primary: #0b7a4a;      /* turf green */
+  --primary-2: #0c81ff;    /* accent blue (kept available) */
+  --muted: #6b6f76;
+  --dark: #1f2933;
+  --card-bg: #ffffff;
+  --glass: rgba(255,255,255,0.8);
+  --shadow: 0 8px 24px rgba(11,122,74,0.08);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --max-width: 1200px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Inter", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+
+html,body{height:100%;background:linear-gradient(180deg,#f6fbf7 0%, #f4fff8 100%);color:var(--dark);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+/* ---------- NAVBAR ---------- */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 6%;
+  background:transparent;
+  position:sticky;
+  top:0;
+  z-index:90;
+  backdrop-filter: blur(6px);
+}
+
+header h2{
+  color:var(--dark);
+  font-weight:700;
+  letter-spacing:0.2px;
+  font-size:1.2rem;
+}
+nav{display:flex;gap:20px;align-items:center}
+nav a{
+  text-decoration:none;color:var(--muted);font-weight:600;padding:8px 12px;border-radius:10px;transition:all .18s ease
+}
+nav a:hover{color:var(--primary);background:rgba(11,122,74,0.06);transform:translateY(-1px)}
+
+.menu-toggle{display:none;font-size:26px;cursor:pointer;color:var(--dark)}
+
+/* Primary buttons */
+.btn,.signin{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--primary);color:#fff;border:none;padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:700;box-shadow:0 6px 18px rgba(11,122,74,0.12);transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn:hover,.signin:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(11,122,74,0.14)}
+
+/* ---------- HERO ---------- */
+.hero{
+  background: linear-gradient(135deg, rgba(11,122,74,0.96), rgba(3,68,138,0.95));
+  color:#fff;text-align:center;padding:76px 20px 140px;border-radius:0 0 36px 36px;position:relative;overflow:hidden;
+  box-shadow: 0 10px 40px rgba(2,28,19,0.06);
+}
+.hero::after{
+  content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.06), rgba(255,255,255,0));transform:rotate(15deg);border-radius:50%;
+  pointer-events:none;
+}
+.hero h1{font-size:2.6rem;line-height:1.05;margin:0 auto;max-width:760px;font-weight:800;letter-spacing:-0.4px}
+.hero p{margin-top:12px;font-size:1.05rem;opacity:0.95;color:rgba(255,255,255,0.92)}
+
+/* Search bar floating under hero */
+.search-bar{
+  position:relative;left:50%;transform:translateX(-50%);width:75%;max-width:980px;background:var(--glass);padding:18px;border-radius:14px;margin-top:-40px;display:flex;gap:12px;align-items:center;box-shadow:0 12px 40px rgba(3,68,138,0.06);
+  backdrop-filter: blur(6px);
+}
+.search-bar input{
+  flex:1;border:none;outline:none;background:transparent;font-size:1rem;padding:8px 12px;color:var(--dark)
+}
+.search-bar .btn{padding:10px 22px;border-radius:12px}
+
+/* ---------- SECTION LAYOUT ---------- */
+section{padding:72px 6%}
+.container{max-width:var(--max-width);margin:0 auto}
+
+/* Headings */
+h2{font-size:1.6rem;margin-bottom:16px;color:var(--dark);font-weight:700}
+h2.lead{font-size:1.15rem;color:var(--muted);font-weight:600;margin-bottom:6px}
+
+/* ---------- POPULAR PLACES GRID ---------- */
+.popular-places{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;
+}
+.place-card{
+  border-radius:var(--radius);overflow:hidden;background:var(--card-bg);box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease;border:1px solid rgba(15,15,15,0.03);
+}
+.place-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(11,122,74,0.08)}
+.place-card img{width:100%;height:160px;object-fit:cover;display:block}
+.place-card .info{padding:16px 18px}
+.place-card .info h3{font-size:1.05rem;color:var(--dark);margin-bottom:6px;font-weight:700}
+.place-card .info p{color:var(--muted);font-size:0.94rem;margin-bottom:10px}
+.place-card .meta{display:flex;align-items:center;justify-content:space-between;font-size:0.88rem;color:var(--muted)}
+
+/* ---------- SPORTS / TURF CARDS ---------- */
+.sports-section{background:linear-gradient(180deg,#ffffff, #f6fbf7);padding:44px;border-radius:18px;box-shadow:0 10px 30px rgba(6,45,21,0.03);width:100%;max-width:var(--max-width);margin:0 auto}
+.sports-section h2{font-size:1.6rem;color:var(--dark)}
+.sports-section p{color:var(--muted);margin-bottom:20px}
+
+.sports-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
+.sport-card{
+  width:260px;background:var(--card-bg);border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(4,37,15,0.04);transition:transform .22s ease, box-shadow .22s ease;border:1px solid rgba(12,12,12,0.03);
+}
+.sport-card:hover{transform:translateY(-10px);box-shadow:0 24px 60px rgba(11,122,74,0.09)}
+.sport-card img{width:100%;height:170px;object-fit:cover}
+.sport-card h3{font-size:1.05rem;padding:12px 16px;color:var(--dark);font-weight:700}
+.sport-card p{padding:0 16px 16px;color:var(--muted);font-size:0.95rem}
+.sport-card .cta{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-top:1px dashed rgba(0,0,0,0.04)}
+
+/* ---------- VIDEO SECTION ---------- */
+.video-section{display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:6px}
+.video-section img{width:100%;max-width:880px;border-radius:12px;box-shadow:0 12px 36px rgba(2,28,19,0.06)}
+
+/* ---------- LOCATIONS / DROPDOWN ---------- */
+.locations{background:linear-gradient(180deg,#066b3f, #03448a);color:#fff;padding:28px;border-radius:12px;max-width:780px;margin:0 auto;box-shadow:0 8px 30px rgba(2,24,18,0.12)}
+.locations h2{color:#fff;margin-bottom:8px;font-size:1.4rem}
+.location-form select{
+  width:100%;max-width:420px;padding:12px 16px;border-radius:12px;border:none;font-size:1rem;background:#fff;color:var(--dark);appearance:none;box-shadow:0 8px 18px rgba(1,18,34,0.06)
+}
+.location-form select:focus{outline:3px solid rgba(255,255,255,0.08)}
+
+/* ---------- FOOTER ---------- */
+footer{padding:44px 6%;background:transparent;color:var(--muted);font-size:0.95rem;}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px){
+  .search-bar{width:88%;padding:14px;flex-direction:column;align-items:stretch}
+  .search-bar input{width:100%}
+  .hero{padding:56px 18px 110px}
+  .hero h1{font-size:2rem}
+  nav{gap:12px}
+  .menu-toggle{display:block}
+  nav{display:none}
+  nav.active{display:flex;flex-direction:column;background:#fff;border-radius:12px;padding:8px;position:absolute;top:64px;left:6%;right:6%;box-shadow:0 18px 40px rgba(2,28,19,0.06)}
+  .popular-places{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  .sports-grid{gap:16px}
+  .sport-card{width:100%}
+}
+
+/* Micro-animations */
+@keyframes floatUp{from{transform:translateY(6px)}to{transform:translateY(0)}}
+.place-card,.sport-card{animation:floatUp .45s ease both}

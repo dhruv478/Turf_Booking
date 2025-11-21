@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turf Booking | {% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h2>Turf Booking</h2>
+    <nav id="nav-menu">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'turfs' %}">Turfs</a>
+       {% if request.user.is_authenticated and request.user.profile.user_type == "owner" %}
+        <a href="{% url 'owner_dashboard' %}">Owner</a>
+    {% endif %}
+
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'profile' %}">Profile</a>
+        <button class="btn">
+            <a href="{% url 'logout' %}" class="signin">Logout</a>
+        </button>
+    {% else %}
+        <button class="btn">
+            <a href="{% url 'role' %}" class="signin">Sign In</a>
+        </button>
+    {% endif %}
+    </nav>
+    <div class="menu-toggle" id="mobile-menu">
+      ☰
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+  <footer>
+    <a href="{% url 'turms' %}">Turms & Condition</a>
+    <p>© 2025 Turf Booking. All rights reserved. | Designed with passion ⚽</p>
+  </footer>
+  <script src="{% static 'js/home.js' %}"></script>
+</body>
+</html>

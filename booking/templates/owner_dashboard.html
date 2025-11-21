@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Owner Dashboard{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<main>
+      <!-- Top Greeting -->
+    <section class="topbar">
+      <h1>Welcome, {{ request.user.first_name }} 👋</h1>
+      <p>Your turf business overview is ready.</p>
+    </section>
+
+    <!-- Stats Cards -->
+      <section class="charts-grid">
+
+        <div class="card chart-card">
+        <h3>Total Turfs</h3>
+        <h1>{{ total_turfs }}</h1>
+        <canvas id="totalTurfs"></canvas>
+        </div>
+
+      <div class="card chart-card">
+        <h3>Bookings Per Turf</h3>
+        {% for item in bookings_per_turf %}
+        <p><strong>{{ item.turf__name }}</strong>: {{ item.total }} bookings</p>
+        {% empty %}
+          <p>No Bookings Yet</p>
+        {% endfor %}
+        <canvas id="bookingsChart"></canvas>
+      </div>
+
+      <div class="card chart-card">
+        <h3>Monthly Revenue</h3>
+        <h1>₹{{ monthly_revenue }}</h1>
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </section>
+
+  <h2>Your Turfs
+  <button class="add-btn"> <a href="{% url 'add_turf' %}">+ Add Turf</a></button></h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Sport<br>(Category)</th>
+        <th>Contact</th>
+        <th>Price/hr</th>
+        <th>Description</th>
+        <th>Start_time</th>
+        <th>End_time</th>
+        <th>Amenities</th>
+        <th>Image</th>
+        <th>Option</th>
+      </tr>
+    </thead>
+    <tbody id="turfTableBody">
+      {% for turf in turfs %}
+        <tr data-id="{{ turf.id }}">
+          <td>{{ turf.name }}</td>
+          <td>{{ turf.location }}</td>
+          <td>{{ turf.sport }}</td>
+          <td>{{ turf.contact_number }}</td>
+          <td>₹{{ turf.price_per_hour }}</td>
+          <td>{{ turf.description }}</td>
+          <td>{{ turf.start_time }}</td>
+          <td>{{ turf.end_time }}</td>
+          <td>{{ turf.amenities }}</td>
+          <td>
+            {% if turf.image %}
+              <img src="{{ turf.image.url }}" width="80" height="60" style="object-fit:cover; border-radius:8px;">
+            {% else %}
+              No image
+            {% endif %}
+          </td>
+          <td>
+            <button class="edit"><a href="{% url 'update_turf' turf.id %}">Edit</a></button>
+            <button class="delete"><a href="{% url 'delete_turf' turf.id %}">Delete</a></button>  
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5" style="text-align:center; color: #777;">No turfs added yet.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>
+  <script>
+    new Chart(document.getElementById("bookingsChart"), {
+        type: "bar",
+        data: {
+            labels: {{ turf_names|safe }},
+            datasets: [{
+                label: "Bookings",
+                data: {{ turf_bookings|safe }},
+                backgroundColor: "#36D1DC"
+            }]
+        }
+    });
+
+    new Chart(document.getElementById("turfChart"), {
+        type: "doughnut",
+        data: {
+            labels: {{ turf_names|safe }},
+            datasets: [{
+                data: {{ turf_count_list|safe }},
+                backgroundColor: ["#5B86E5", "#36D1DC", "#8E44AD", "#F1C40F", "#E74C3C"]
+            }]
+        }
+    });
+  </script>
+
+{% endblock %}

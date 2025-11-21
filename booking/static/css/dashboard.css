@@ -1,0 +1,306 @@
+/* ========= ROOT THEME ========= */
+:root {
+  --primary: #8bd59e;
+  --primary-dark: #66c07a;
+  --dark: #1f2933;
+  --muted: #6b6f76;
+  --bg-light: #f6fbf7;
+  --card: #ffffff;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(139,213,158,0.15);
+  --shadow-soft: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+/* ========= RESET ========= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-light);
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========= TOPBAR ========= */
+.topbar {
+  padding: 30px 20px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-radius: 0 0 20px 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+}
+.topbar h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.topbar p {
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+/* ========= GRID FOR CARDS ========= */
+.charts-grid {
+  padding: 20px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* ========= DASHBOARD CARDS ========= */
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(139,213,158,0.12);
+  transition: 0.2s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.card h1 {
+  font-size: 2rem;
+  color: var(--primary-dark);
+}
+
+/* ========= ADD TURF BUTTON ========= */
+.add-btn {
+  margin-left: 12px;
+  background: var(--primary);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(139,213,158,0.25);
+  transition: 0.2s;
+}
+.add-btn:hover {
+  background: var(--primary-dark);
+}
+.add-btn a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ========= TABLE STYLING ========= */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  box-shadow: var(--shadow-soft);
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+thead {
+  background: var(--primary);
+  color: white;
+}
+thead th {
+  padding: 14px;
+  font-weight: 600;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e9f5ed;
+  transition: background 0.2s;
+}
+tbody tr:hover {
+  background: rgba(139,213,158,0.06);
+}
+
+tbody td {
+  padding: 12px;
+  font-size: 0.95rem;
+  color: var(--dark);
+}
+
+/* ========= EDIT & DELETE BUTTONS ========= */
+.edit, .delete {
+  border: none;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.edit {
+  background: var(--primary);
+  color: white;
+}
+.edit:hover {
+  background: var(--primary-dark);
+}
+
+.delete {
+  background: #ff4d4d;
+  color: white;
+}
+.delete:hover {
+  opacity: 0.8;
+}
+
+.edit a, .delete a {
+  text-decoration: none;
+  color: white;
+}
+
+/* ========= CANVAS RESPONSIVE ========= */
+canvas {
+  width: 100% !important;
+  height: 180px !important;
+  margin-top: 15px;
+}
+:root {
+  --primary: #8bd59e;
+  --primary-dark: #66c07a;
+  --bg: #f6fbf7;
+  --card: #ffffff;
+  --muted: #6b6f76;
+  --dark: #1f2933;
+  --shadow: 0 10px 30px rgba(139,213,158,0.18);
+  --radius: 14px;
+}
+
+/* PAGE BACKGROUND */
+body {
+  background: var(--bg);
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--dark);
+}
+
+/* ADD TURF FORM CONTAINER */
+.form-container {
+  background: var(--card);
+  width: 90%;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: 0.25s ease;
+}
+
+.form-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(139,213,158,0.22);
+}
+
+/* TITLE */
+.form-container h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 20px;
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+}
+
+/* FORM FIELDS */
+form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: var(--dark);
+  font-size: 15px;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d9e8df;
+  background: #ffffff;
+  font-size: 15px;
+  color: var(--dark);
+  transition: 0.2s ease;
+}
+
+form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* FOCUS STYLE */
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 6px rgba(139,213,158,0.35);
+  outline: none;
+}
+
+/* SUBMIT BUTTON */
+.btn-e {
+  margin-top: 20px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 8px 20px rgba(139,213,158,0.25);
+}
+
+.btn-e:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+}
+
+/* CANCEL LINK */
+.cancel-btn {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted);
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.cancel-btn:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .form-container {
+    padding: 28px;
+  }
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 768px) {
+  .topbar {
+    text-align: center;
+    padding: 24px 14px;
+  }
+  .add-btn {
+    margin: 10px 0;
+  }
+  table {
+    font-size: 0.85rem;
+  }
+  thead { font-size: 0.9rem; }
+}
+
