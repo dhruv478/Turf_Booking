@@ -24,7 +24,8 @@
       <div class="card chart-card">
         <h3>Bookings Per Turf</h3>
         {% for item in bookings_per_turf %}
-        <p><strong>{{ item.turf__name }}</strong>: {{ item.total }} bookings</p>
+        <p><strong>{{ item.turf__name }}</strong>: {{ item.total }} bookings </p>
+        <p><strong>{{ item.time }}</strong></p>
         {% empty %}
           <p>No Bookings Yet</p>
         {% endfor %}

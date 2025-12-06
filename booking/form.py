@@ -79,19 +79,31 @@ class BookingForm(forms.ModelForm):
 # Also creates a Profile object automatically with user_type="user".
 # -------------------------------------------------------------------
 class UserSignupForm(UserCreationForm):
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={
-        'placeholder': 'Email',
-        'class': 'form-control'
-    }))
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-        widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'Full Name', 'class': 'form-control'}),
-            'password1': forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control'}),
-            'password2': forms.PasswordInput(attrs={'placeholder': 'Confirm Password', 'class': 'form-control'}),
-        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['username'].widget.attrs.update({
+            'placeholder': 'Full Name',
+            'class': 'form-control'
+        })
+        self.fields['email'].widget.attrs.update({
+            'placeholder': 'Email',
+            'class': 'form-control'
+        })
+        self.fields['password1'].widget.attrs.update({
+            'placeholder': 'Password',
+            'class': 'form-control'
+        })
+        self.fields['password2'].widget.attrs.update({
+            'placeholder': 'Confirm Password',
+            'class': 'form-control'
+        })
+
 
     def save(self, commit=True):
         """
@@ -109,20 +121,31 @@ class UserSignupForm(UserCreationForm):
 # Similar to user signup but assigns user_type="owner".
 # -------------------------------------------------------------------
 class OwnerSignupForm(UserCreationForm):
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={
-        'placeholder': 'Email',
-        'class': 'form-control'
-    }))
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-        widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'User Name', 'class': 'form-control'}),
-            'password1': forms.PasswordInput(attrs={'placeholder': 'Enter Password', 'class': 'form-control'}),
-            'password2': forms.PasswordInput(attrs={'placeholder': 'Confirm Password', 'class': 'form-control'}),
-        }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['username'].widget.attrs.update({
+            'placeholder': 'Full Name',
+            'class': 'form-control'
+        })
+        self.fields['email'].widget.attrs.update({
+            'placeholder': 'Email',
+            'class': 'form-control'
+        })
+        self.fields['password1'].widget.attrs.update({
+            'placeholder': 'Password',
+            'class': 'form-control'
+        })
+        self.fields['password2'].widget.attrs.update({
+            'placeholder': 'Confirm Password',
+            'class': 'form-control'
+        })
+    
     def save(self, commit=True):
         """
         Save owner user and create profile with user_type='owner'.

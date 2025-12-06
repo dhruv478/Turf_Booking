@@ -15,9 +15,9 @@
     <nav id="nav-menu">
       <a href="{% url 'home' %}">Home</a>
       <a href="{% url 'turfs' %}">Turfs</a>
-       {% if request.user.is_authenticated and request.user.profile.user_type == "owner" %}
+      {% if request.user.profile.user_type == "owner" %}
         <a href="{% url 'owner_dashboard' %}">Owner</a>
-    {% endif %}
+      {% endif %}
 
     {% if request.user.is_authenticated %}
         <a href="{% url 'profile' %}">Profile</a>
