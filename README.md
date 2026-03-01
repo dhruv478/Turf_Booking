@@ -9,8 +9,7 @@ It provides a seamless experience for users to search, book, and pay for turf sl
 
 ### 👤 **User Features**
 - User registration and login  
-- View available turfs  
-- Check available booking slots  
+- View available turfs
 - Book turfs with UPI payment  
 - View booking receipt  
 - Manage user profile  
@@ -18,8 +17,7 @@ It provides a seamless experience for users to search, book, and pay for turf sl
 
 ### 🏢 **Owner Features**
 - Owner registration and login  
-- Add, edit, update, delete turfs  
-- Slot management  
+- Add, edit, update, delete turfs
 - View total bookings  
 - Dashboard analytics (turf count, bookings, revenue, etc.)  
 - Manage owner profile with UPI ID  
